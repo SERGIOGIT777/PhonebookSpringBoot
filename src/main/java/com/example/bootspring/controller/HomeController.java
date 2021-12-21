@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
     @Autowired
     private PhonebookRepository phonebookRepository;
