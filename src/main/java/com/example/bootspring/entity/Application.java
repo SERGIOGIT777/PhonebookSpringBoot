@@ -1,26 +1,29 @@
 package com.example.bootspring.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "application")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Firstname should not be empty")
     private String firstname;
+    @NotEmpty(message = "Lastname should not be empty")
     private String lastname;
+    @Range(min = 1, max = 100, message = "Age should be between 0 and 100 characters")
+    @NotNull(message = "Age should not be empty")
     private Long age;
+    @NotEmpty(message = "Address should not be empty")
     private String address;
+    @NotNull(message = "Status should not be empty")
+    @Range(max = 3, message = "Status should be max 2 characters")
     private Long status;
 
     public Long getId() {
@@ -46,7 +49,6 @@ public class Application {
     }
 
     @Column(name = "age")
-    @Size(min = 1, max = 100)
     public Long getAge() {
         return age;
     }
@@ -64,25 +66,12 @@ public class Application {
         this.address = address;
     }
 
+    @Column(name = "status")
     public Long getStatus() {
         return status;
     }
 
-    @Column(name = "status")
-    @Size(max = 1)
     public void setStatus(Long status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Application{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                ", status=" + status +
-                '}';
     }
 }

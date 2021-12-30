@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ListApplication</title>
-    <<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Update Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -82,36 +82,46 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h3>Application list</h3>
-
-    <hr/>
-    <a th:href="@{/application/addApplicationForm}" class="btn btn-primary btn-lg">Add Application</a>
-    <br/><br/>
-    <a th:href="@{/}" class="btn btn-primary btn-lg">Home</a>
-    <br/><br/>
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">First name</th>
-            <th scope="col">Second name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Age</th>
-            <th scope="col">Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="applicationCard: ${applications}" class="bg-info">
-            <td th:text="${applicationCard.getId()}"></td>
-            <td th:text="${applicationCard.firstname}"></td>
-            <td th:text="${applicationCard.lastname}"></td>
-            <td th:text="${applicationCard.address}"></td>
-            <td th:text="${applicationCard.age}"></td>
-            <td th:text="${applicationCard.status}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<section class="get-in-touch">
+    <h1 class="title">Update card</h1>
+    <form class="contact-form row" method="POST" action="#" th:action="@{/application/updateApplication}"
+          th:object="${update}">
+        <div class="form-field col-lg-6">
+            <input id="id" class="input-text js-input" type="text" name="id"  th:field="${update.id}"
+                   required>
+            <label class="label" for="id">Id</label>
+        </div>
+        <div class="form-field col-lg-6">
+            <input id="firstname" class="input-text js-input" type="text" name="firstname"  th:field="${update.firstname}"
+                   pattern="^[A-Za-z]+$" required>
+            <label class="label" for="firstname">First name</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="lastname" class="input-text js-input" type="text" name="lastname"
+                   th:field="${update.lastname}" pattern="^[A-Za-z]+$" required>
+            <label class="label" for="lastname">Last name</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="age" class="input-text js-input" type="text" name="age"
+                   th:field="${update.age}" pattern="^[0-9]{1,3}" required>
+            <label class="label" for="age">Age</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="address" class="input-text js-input" type="text" name="address"
+                   th:field="${update.address}" required>
+            <label class="label" for="address">Address</label>
+        </div>
+        <div class="form-field col-lg-12">
+            <input id="status" class="input-text js-input" type="text" name="status"
+                   th:field="${update.status}" pattern="^[0-3]{1}" placeholder="1" required>
+            <label class="label" for="status">Status</label>
+        </div>
+        <div class="form-field col-lg-12">
+            <input class="submit-btn" type="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="submit-btn" type="button"
+                   onclick="document.location='http://localhost:8081/application/listApplication'" value="HOME">
+        </div>
+    </form>
+</section>
 </body>
 </html>

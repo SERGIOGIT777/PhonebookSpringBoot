@@ -85,32 +85,42 @@
 <section class="get-in-touch">
     <h1 class="title">Application card</h1>
     <form class="contact-form row" method="POST" action="#" th:action="@{/application/saveApplication}"
-          th:object="${card}">
+          th:object="${application}">
         <div class="form-field col-lg-6">
-            <input id="fname" class="input-text js-input" type="text" name="fname" th:field="*{firstname}"
-                   pattern="^[A-Za-z]+$" required>
-            <label class="label" for="fname">First name</label>
+            <input id="firstname" class="input-text js-input" type="text" name="fname" th:field="*{firstname}"
+                   pattern="^[A-Za-z]+$">
+            <label class="label" for="firstname">First name</label>
         </div>
+        <div style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">
+            FirstName Error</div>
         <div class="form-field col-lg-6 ">
-            <input id="lname" class="input-text js-input" type="text" name="lname"
-                   th:field="*{lastname}" pattern="^[A-Za-z]+$" required>
-            <label class="label" for="lname">Last name</label>
+            <input id="lastname" class="input-text js-input" type="text" name="lname"
+                   th:field="*{lastname}" pattern="^[A-Za-z]+$">
+            <label class="label" for="lastname">Last name</label>
         </div>
+        <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">
+            LastName Error</div>
         <div class="form-field col-lg-6 ">
             <input id="age" class="input-text js-input" type="text" name="age"
-                   th:field="*{age}" pattern="^[0-9]{1,3}" required>
+                   th:field="*{age}" pattern="^[0-9]{1,3}">
             <label class="label" for="age">Age</label>
         </div>
+       <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+            Age Error</div>
         <div class="form-field col-lg-6 ">
             <input id="address" class="input-text js-input" type="text" name="address"
-                   th:field="*{address}" required>
+                   th:field="*{address}">
             <label class="label" for="address">Address</label>
         </div>
+        <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">
+            Address Error</div>
         <div class="form-field col-lg-12">
             <input id="status" class="input-text js-input" type="text" name="status"
-                   th:field="*{status}" pattern="^[0-3]{1}" placeholder="1" required>
+                   th:field="*{status}">
             <label class="label" for="status">Status</label>
         </div>
+        <div style="color:red" th:if="${#fields.hasErrors('status')}" th:errors="*{status}">
+            Status Error</div>
         <div class="form-field col-lg-12">
             <input class="submit-btn" type="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="submit-btn" type="button"

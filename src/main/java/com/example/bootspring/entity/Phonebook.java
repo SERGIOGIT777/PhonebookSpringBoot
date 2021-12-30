@@ -1,9 +1,6 @@
 package com.example.bootspring.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -12,9 +9,6 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "phonebook")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Phonebook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,17 +73,5 @@ public class Phonebook {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Phonebook{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", age=" + age +
-                ", phone_number='" + phone_number + '\'' +
-                ", address='" + address + '\'' +
-                '}';
     }
 }
