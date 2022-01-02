@@ -14,6 +14,13 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     @Query(value = "select c from Application c where c.firstname = :firstname")
     List<Application> findByName(@Param("firstname") String firstname);
 
+    @Query(value = "select c from Application c where c.firstname = :firstname and c.age = :age")
+    List<Application> findByNameAge(@Param("firstname") String firstname, @Param("age") Long age);
+
+    @Query(value = "select c from Application c where c.firstname = :firstname and c.age = :age and c.address = :address")
+    List<Application> findByNameAgeAddress(@Param("firstname") String firstname, @Param("age") Long age,
+                                           @Param("address") String address);
+
     @Modifying
     @Query(value = "update Application c set c.firstname=:firstname, c.lastname=:lastname," +
             "c.age=:age, c.address=:address, c.status=:status where c.id=:id")

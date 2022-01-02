@@ -66,6 +66,21 @@ public class ApplicationController {
         return mav;
     }
 
+    @GetMapping("/findApplication2")
+    public ModelAndView findApplication(@RequestParam String firstname, @RequestParam Long age) {
+        ModelAndView mav = new ModelAndView("find/finder2Application");
+        mav.addObject("finder2", applicationRepository.findByNameAge(firstname, age));
+        return mav;
+    }
+
+    @GetMapping("/findApplication3")
+    public ModelAndView findApplication(@RequestParam String firstname, @RequestParam String address,
+                                        @RequestParam Long age) {
+        ModelAndView mav = new ModelAndView("find/finder3Application");
+        mav.addObject("finder3", applicationRepository.findByNameAgeAddress(firstname, age, address));
+        return mav;
+    }
+
     @PostMapping("/saveApplication")
     public String saveApplication(@Valid Application application, BindingResult result, Model model) {
         if (result.hasErrors()) {
