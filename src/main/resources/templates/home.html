@@ -20,5 +20,10 @@
         onclick="document.location='http://localhost:8081/application/listApplication'">Database Application</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block"
         onclick="document.location='http://localhost:8081/phonebook/listPhone'">Database Phonebook</button>
+
+<hr/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Sign Out"/>
+</form>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.example.bootspring.controller;
 import com.example.bootspring.entity.Phonebook;
 import com.example.bootspring.repository.PhonebookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
     @Autowired
     private PhonebookRepository phonebookRepository;
