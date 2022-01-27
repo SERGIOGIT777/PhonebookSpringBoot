@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.LinkedList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/home")
 public class HomeController {
     @Autowired

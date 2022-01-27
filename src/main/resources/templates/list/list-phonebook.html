@@ -33,8 +33,19 @@
     </thead>
     <tbody>
     <tr th:each="phonebook: ${phonebooks}" class="bg-info">
-        <td><a th:href="@{/phonebook/updatePhonebookForm(id=${phonebook.getId()})}">
-            <b th:text="${phonebook.getId()}"></b></a></td>
+        <td>
+<!--            <a th:href="@{/phonebook/updatePhonebookForm(id=${phonebook.getId()})}">-->
+<!--            <b th:text="${phonebook.getId()}"></b></a>-->
+            <form action="#" th:action="@{/phonebook/deleteMappingPhone(id=${phonebook.getId()})}"
+                  th:method="delete">
+                <b th:text="${phonebook.getId()}"></b>
+                <button type="button" class="btn btn-success"
+                        th:onclick="|window.location.href='@{/phonebook/updatePhonebookForm(id=${phonebook.getId()})}'|">
+                    UPDATE
+                </button>
+                <input type="submit" class="btn btn-danger" value="DELETE"/>
+            </form>
+        </td>
         <td th:text="${phonebook.firstname}"></td>
         <td th:text="${phonebook.lastname}"></td>
         <td th:text="${phonebook.age}"></td>

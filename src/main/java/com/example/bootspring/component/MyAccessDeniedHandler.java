@@ -1,4 +1,4 @@
-package com.example.bootspring.controller;
+package com.example.bootspring.component;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +24,9 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
-            logger.info("User '" + auth.getName() + "' attempted to access the protected URL: " + httpServletRequest.getRequestURI());
+            logger.info("User '" + auth.getName() + "' attempted to access the protected URL: " +
+                    httpServletRequest.getRequestURI());
         }
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/error_page");
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/adminPage/addUsers");
     }
 }

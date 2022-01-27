@@ -32,8 +32,22 @@
         </thead>
         <tbody>
         <tr th:each="applicationCard: ${applications}" class="bg-info">
-            <td><a th:href="@{/application/updateApplicationForm(id=${applicationCard.getId()})}">
-                <b th:text="${applicationCard.getId()}"></b></a></td>
+            <td>
+<!--                <a th:href="@{/application/updateApplicationForm(id=${applicationCard.getId()})}">-->
+<!--                    <b th:text="${applicationCard.getId()}"></b>-->
+<!--                </a>-->
+
+                <form action="#" th:action="@{/application/deleteMapping(id=${applicationCard.getId()})}"
+                      th:method="delete">
+                    <b th:text="${applicationCard.getId()}"></b>
+                    <button type="button" class="btn btn-success"
+                            th:onclick="|window.location.href='@{/application/updateApplicationForm(id=${applicationCard.getId()})}'|">
+                        UPDATE
+                    </button>
+                    <input type="submit" class="btn btn-danger" value="DELETE"/>
+                </form>
+
+            </td>
             <td th:text="${applicationCard.firstname}"></td>
             <td th:text="${applicationCard.lastname}"></td>
             <td th:text="${applicationCard.address}"></td>

@@ -90,4 +90,11 @@ public class ApplicationController {
         model.addAttribute("peoples", applicationRepository.findAll());
         return "redirect:/application/listApplication";
     }
+
+    @DeleteMapping("/deleteMapping")
+    @Transactional
+    public String deleteMapping(@RequestParam Long id) {
+        applicationRepository.deleteById(id);
+        return "redirect:/application/listApplication";
+    }
 }

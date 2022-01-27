@@ -76,4 +76,11 @@ public class PhonebookController {
         model.addAttribute("users", phonebookRepository.findAll());
         return "redirect:/phonebook/listPhone";
     }
+
+    @DeleteMapping("/deleteMappingPhone")
+    @Transactional
+    public String deleteMapping(@RequestParam Long id) {
+        phonebookRepository.deleteById(id);
+        return "redirect:/phonebook/listPhone";
+    }
 }
